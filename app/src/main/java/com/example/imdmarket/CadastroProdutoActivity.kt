@@ -10,6 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class CadastroProdutoActivity : AppCompatActivity() {
+    private lateinit var produtoDAO: ProdutoDAO
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,7 +22,7 @@ class CadastroProdutoActivity : AppCompatActivity() {
             insets
         }
 
-        var produtoDAO = ProdutoDAO(this)
+        produtoDAO = ProdutoDAO(this)
 
         val etCodigo = findViewById<EditText>(R.id.etCodigo)
         val etNome = findViewById<EditText>(R.id.etNome)
@@ -42,6 +44,13 @@ class CadastroProdutoActivity : AppCompatActivity() {
             }
 
             val produto = Produto(codigo, nome, descricao, estoque.toInt())
+            val produtos = produtoDAO.listarProdutos()
+            val produtoExistente = produtos.find { it.codigo == codigo }
+
+            if (produtoExistente != null) {
+                Toast.makeText(this, "Produto já Cadastrado!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val sucesso = produtoDAO.adicionarProduto(produto)
             if(sucesso){

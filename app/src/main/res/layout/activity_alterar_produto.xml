@@ -28,9 +28,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Código produto:"/>
+            android:text="Código produto:" />
 
         <EditText
+            android:id="@+id/etCodigo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -42,6 +43,7 @@
             android:text="Nome do produto:" />
 
         <EditText
+            android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
@@ -52,6 +54,7 @@
             android:text="Descrição do produto:" />
 
         <EditText
+            android:id="@+id/etDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
@@ -62,8 +65,10 @@
             android:text="Estoque:"/>
 
         <EditText
+            android:id="@+id/etEstoque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:layout_marginBottom="16dp"/>
 
         <LinearLayout
@@ -73,6 +78,7 @@
             android:gravity="center">
 
             <Button
+                android:id="@+id/btnAlterar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -80,6 +86,7 @@
                 android:layout_marginEnd="8dp"/>
 
             <Button
+                android:id="@+id/btnLimpar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

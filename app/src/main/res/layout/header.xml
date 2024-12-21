@@ -5,13 +5,14 @@
     android:orientation="horizontal"
     android:background="#FF8C00"
     android:padding="16dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/header">
 
     <TextView
-    android:id="@+id/tvHeaderTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="IMDMARKET"
-    android:textColor="@color/white"
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IMDMARKET"
+        android:textColor="@color/white"
         android:textSize="30sp" />
 </LinearLayout>
