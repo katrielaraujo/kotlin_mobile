@@ -1,8 +1,11 @@
 package com.example.imdmarket
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -31,29 +34,30 @@ class ExcluirProdutoActivity : AppCompatActivity() {
         btnDeletar.setOnClickListener {
             val codigo = etCodigo.text.toString()
 
-            if(codigo.isEmpty()){
-                Toast.makeText(this,"Código do produto é obrigatório!", Toast.LENGTH_SHORT).show()
+            if (codigo.isEmpty()) {
+                Toast.makeText(this, "Código do produto é obrigatório!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val produtos = produtoDAO.listarProdutos()
             val produtoExistente = produtos.find { it.codigo == codigo }
 
-            if(produtoExistente != null){
+            if (produtoExistente != null) {
                 val sucesso = produtoDAO.deletarProduto(codigo)
-                if(sucesso){
-                    Toast.makeText(this, "Produto deletado com sucesso!",Toast.LENGTH_SHORT).show()
+                if (sucesso) {
+                    Toast.makeText(this, "Produto deletado com sucesso!", Toast.LENGTH_SHORT).show()
                     limparCampos(etCodigo)
-                }else{
-                    Toast.makeText(this ,"Erro ao deletar o produto!", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Erro ao deletar o produto!", Toast.LENGTH_SHORT).show()
                 }
-            }else{
+            } else {
+                Toast.makeText(this, "Produto não encontrado!", Toast.LENGTH_SHORT).show()
                 limparCampos(etCodigo)
             }
+        }
 
-            btnLimpar.setOnClickListener {
-                limparCampos(etCodigo)
-            }
+        btnLimpar.setOnClickListener {
+            limparCampos(etCodigo)
         }
     }
 
